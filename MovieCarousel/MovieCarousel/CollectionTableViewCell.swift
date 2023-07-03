@@ -11,7 +11,7 @@ struct CollectionTableViewCellViewModel {
     let viewModels: [CollectionViewCellViewModel]
 }
 
-class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     static let identifier = "CollectionTableViewCell"
     
     private var viewModels: [CollectionViewCellViewModel] = []
@@ -60,5 +60,10 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     func configure(with viewModel: CollectionTableViewCellViewModel) {
         self.viewModels = viewModel.viewModels
         collectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width: CGFloat = contentView.frame.size.width/2.5
+        return CGSize(width: width, height: width/1.1)
     }
 }

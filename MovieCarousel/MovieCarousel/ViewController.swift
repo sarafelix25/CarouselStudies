@@ -7,11 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -31,6 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         view.addSubview(tableView)
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,6 +51,10 @@ class ViewController: UIViewController, UITableViewDataSource {
         }
         cell.configure(with: viewModel)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return view.frame.size.width/2
     }
 }
 
