@@ -7,8 +7,14 @@
 
 import UIKit
 
+struct CollectionTableViewCellViewModel {
+    let viewModels: [CollectionViewCellViewModel]
+}
+
 class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     static let identifier = "CollectionTableViewCell"
+    
+    private var viewModels: [CollectionViewCellViewModel] = []
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -17,6 +23,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .systemBackground
         return collectionView
     }()
@@ -39,15 +46,19 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else {
             fatalError()
         }
-        
-       return cell
+        cell.configure(with: viewModels[indexPath.row])
+        return cell
     }
     
+    func configure(with viewModel: CollectionTableViewCellViewModel) {
+        self.viewModels = viewModel.viewModels
+        collectionView.reloadData()
+    }
 }

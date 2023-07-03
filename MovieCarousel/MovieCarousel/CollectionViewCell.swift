@@ -7,16 +7,24 @@
 
 import UIKit
 
+struct CollectionViewCellViewModel {
+    let name: String
+    let backGround: UIColor
+}
+
 class CollectionViewCell: UICollectionViewCell {
     static let identifier = "CollectionViewCell"
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .systemBlue
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
     
+    func configure(with viewModel: CollectionViewCellViewModel) {
+        contentView.backgroundColor = viewModel.backGround
+    }
 }
