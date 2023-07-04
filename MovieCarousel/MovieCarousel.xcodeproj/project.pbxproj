@@ -14,6 +14,7 @@
 		8918ED792A50EE220083DB72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8918ED772A50EE220083DB72 /* LaunchScreen.storyboard */; };
 		8918ED812A5106370083DB72 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8918ED802A5106370083DB72 /* CollectionTableViewCell.swift */; };
 		8918ED832A5109F30083DB72 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8918ED822A5109F30083DB72 /* CollectionViewCell.swift */; };
+		8918ED862A539E230083DB72 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8918ED852A539E230083DB72 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8918ED7A2A50EE220083DB72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8918ED802A5106370083DB72 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		8918ED822A5109F30083DB72 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		8918ED852A539E230083DB72 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		8918ED6B2A50EE200083DB72 /* MovieCarousel */ = {
 			isa = PBXGroup;
 			children = (
+				8918ED842A539E0D0083DB72 /* Movie */,
 				8918ED6C2A50EE200083DB72 /* AppDelegate.swift */,
 				8918ED6E2A50EE200083DB72 /* SceneDelegate.swift */,
 				8918ED702A50EE200083DB72 /* ViewController.swift */,
@@ -68,6 +71,14 @@
 				8918ED822A5109F30083DB72 /* CollectionViewCell.swift */,
 			);
 			path = MovieCarousel;
+			sourceTree = "<group>";
+		};
+		8918ED842A539E0D0083DB72 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				8918ED852A539E230083DB72 /* Movie.swift */,
+			);
+			path = Movie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +153,7 @@
 			files = (
 				8918ED832A5109F30083DB72 /* CollectionViewCell.swift in Sources */,
 				8918ED712A50EE200083DB72 /* ViewController.swift in Sources */,
+				8918ED862A539E230083DB72 /* Movie.swift in Sources */,
 				8918ED6D2A50EE200083DB72 /* AppDelegate.swift in Sources */,
 				8918ED6F2A50EE200083DB72 /* SceneDelegate.swift in Sources */,
 				8918ED812A5106370083DB72 /* CollectionTableViewCell.swift in Sources */,
