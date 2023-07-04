@@ -11,8 +11,14 @@ struct CollectionTableViewCellViewModel {
     let viewModels: [CollectionViewCellViewModel]
 }
 
+protocol CollectionTableViewCellDelegate: AnyObject {
+    func collectionTableViewCellDidTapItem(with viewModel: CollectionViewCellViewModel)
+}
+
 class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     static let identifier = "CollectionTableViewCell"
+    
+    weak var delegatee: CollectionTableViewCellDelegate?
     
     private var viewModels: [CollectionViewCellViewModel] = []
     
@@ -65,5 +71,11 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = contentView.frame.size.width/2.5
         return CGSize(width: width, height: width/1.1)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let viewModel = viewModels[indexPath.row]
+        delegatee?.collectionTableViewCellDidTapItem(with: viewModel)
     }
 }

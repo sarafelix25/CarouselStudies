@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     private let viewModels: [CollectionTableViewCellViewModel] = [
         CollectionTableViewCellViewModel(viewModels: [
-            CollectionViewCellViewModel(name: "The Ice Age", backGround: .systemBlue),
+            CollectionViewCellViewModel(name: "The Ice Age", backGround: .systemBrown),
             CollectionViewCellViewModel(name: "The", backGround: .systemBlue),
             CollectionViewCellViewModel(name: "The Ice", backGround: .systemRed),
             CollectionViewCellViewModel(name: "The Age", backGround: .systemCyan),
@@ -49,6 +49,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
             fatalError()
         }
+        cell.delegatee = self
         cell.configure(with: viewModel)
         return cell
     }
@@ -58,3 +59,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 }
 
+extension ViewController: CollectionTableViewCellDelegate {
+    func collectionTableViewCellDidTapItem(with viewModel: CollectionViewCellViewModel) {
+        let alert = UIAlertController(title: viewModel.name, message: "You sucessfully got the selected item!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+}
